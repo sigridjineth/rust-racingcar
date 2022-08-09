@@ -7,13 +7,13 @@ pub struct Game {
 }
 
 impl Game {
-    pub fn new(number_of_players: i32, number_of_attempts: i32) -> Self {
+    pub fn new(name_of_players: Vec<String>, number_of_players: i32, number_of_attempts: i32) -> Self {
         let new_game = Self {
             number_of_players,
             number_of_attempts,
             players: Vec::with_capacity(number_of_players as usize)
         };
-        let new_game = Self::initialize_players(new_game);
+        let new_game = Self::initialize_players(new_game, &name_of_players);
         let new_game = Self::play_steps(new_game);
         Self::print_the_dash_by_the_amount_of_is_moved_on_steps(&new_game);
         new_game
@@ -27,14 +27,12 @@ impl Game {
         self.number_of_attempts
     }
 
-    pub fn initialize_players(self) -> Self {
-        let mut this = self;
-        for i in 1..this.number_of_players {
-            let player_name = format!("Player {}", i);
-            let player = player::Player::new(player_name, this.number_of_attempts);
-            this.players.push(player);
+    pub fn initialize_players(mut self, name_of_players: &Vec<String>) -> Self {
+        for name in name_of_players {
+            let new_player = player::Player::new(name.to_string(), self.number_of_attempts);
+            self.players.push(new_player);
         }
-        this
+        self
     }
 
     pub fn play_steps(self) -> Self {

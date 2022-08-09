@@ -13,7 +13,7 @@ impl Player {
         }
     }
     pub fn play_steps(&mut self) {
-        for i in 0..self.steps.capacity() {
+        for _ in 0..self.steps.capacity() {
             let step = step::Step::new();
             self.steps.push(step);
         }
