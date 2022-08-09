@@ -13,7 +13,8 @@ impl Game {
             number_of_attempts,
             players: Vec::with_capacity(number_of_players as usize)
         };
-        Self::initialize_players(new_game)
+        let new_game = Self::initialize_players(new_game);
+        Self::play_steps(new_game)
     }
 
     pub fn get_number_of_players(&self) -> i32 {
@@ -30,6 +31,14 @@ impl Game {
             let player_name = format!("Player {}", i);
             let player = player::Player::new(player_name, this.number_of_attempts);
             this.players.push(player);
+        }
+        this
+    }
+
+    pub fn play_steps(self) -> Self {
+        let mut this = self;
+        for player in this.players.iter_mut() {
+            player.play_steps();
         }
         this
     }

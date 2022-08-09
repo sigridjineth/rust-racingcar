@@ -12,4 +12,10 @@ impl Player {
             steps: Vec::with_capacity(number_of_attempts as usize)
         }
     }
+    pub fn play_steps(&mut self) {
+        for i in 0..self.steps.capacity() {
+            let step = step::Step::new();
+            self.steps.push(step);
+        }
+    }
 }
