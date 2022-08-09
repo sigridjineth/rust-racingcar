@@ -14,7 +14,9 @@ impl Game {
             players: Vec::with_capacity(number_of_players as usize)
         };
         let new_game = Self::initialize_players(new_game);
-        Self::play_steps(new_game)
+        let new_game = Self::play_steps(new_game);
+        Self::print_the_dash_by_the_amount_of_is_moved_on_steps(&new_game);
+        new_game
     }
 
     pub fn get_number_of_players(&self) -> i32 {
@@ -27,7 +29,7 @@ impl Game {
 
     pub fn initialize_players(self) -> Self {
         let mut this = self;
-        for i in 0..this.number_of_players {
+        for i in 1..this.number_of_players {
             let player_name = format!("Player {}", i);
             let player = player::Player::new(player_name, this.number_of_attempts);
             this.players.push(player);
@@ -41,5 +43,12 @@ impl Game {
             player.play_steps();
         }
         this
+    }
+
+    pub fn print_the_dash_by_the_amount_of_is_moved_on_steps(&self) {
+        for player in self.players.iter() {
+            player.print_the_dash_by_the_amount_of_is_moved_on_steps();
+            println!("\n");
+        }
     }
 }

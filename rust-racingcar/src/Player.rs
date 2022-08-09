@@ -18,4 +18,10 @@ impl Player {
             self.steps.push(step);
         }
     }
+    pub fn print_the_dash_by_the_amount_of_is_moved_on_steps(&self) {
+        println!("{}", self.name);
+        for step in self.steps.iter() {
+            println!("{}", step);
+        }
+    }
 }
