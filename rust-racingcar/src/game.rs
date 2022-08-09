@@ -46,7 +46,6 @@ impl Game {
     pub fn print_the_dash_by_the_amount_of_is_moved_on_steps(&self) {
         for player in self.players.iter() {
             player.print_the_dash_by_the_amount_of_is_moved_on_steps();
-            println!("\n");
         }
     }
 }
