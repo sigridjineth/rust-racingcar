@@ -1,4 +1,5 @@
 #[path = "input_integer.rs"] mod input_integer;
+#[path = "game.rs"] mod game;
 
 fn main() {
     println!("Rust로 구현하는 자동차 경주 게임");
@@ -12,4 +13,7 @@ fn main() {
     println!("시도할 횟수는 몇 회인가요?");
     let the_number_of_attempts: i32 = input_integer::input();
     println!("시도할 횟수: {:?}", the_number_of_attempts);
+
+    let initialized_game: game::Game = game::Game::new(the_number_of_cars, the_number_of_attempts);
+    println!("초기화된 게임: {:?}", initialized_game);
 }
