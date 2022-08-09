@@ -14,6 +14,6 @@ fn main() {
     let the_number_of_attempts: i32 = input_integer::input();
     println!("시도할 횟수: {:?}", the_number_of_attempts);
 
-    let initialized_game: game::Game = game::Game::new(the_number_of_cars, the_number_of_attempts);
+    let initialized_game = game::Game::new(the_number_of_cars, the_number_of_attempts);
     println!("초기화된 게임: {:?}", initialized_game);
 }
