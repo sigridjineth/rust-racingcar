@@ -1,5 +1,5 @@
 #[path = "view/input.rs"] mod input;
-#[path = "model/game.rs"] mod game;
+#[path = "model/Game.rs"] mod Game;
 #[path = "test/test.rs"] mod test;
 
 fn main() {
@@ -19,6 +19,6 @@ fn main() {
     let player_names: Vec<String> = input::input_names();
     println!("입력 받은 자동차 이름, {:?}", player_names);
 
-    let initialized_game = game::Game::new(player_names, the_number_of_cars, the_number_of_attempts);
+    let initialized_game = Game::Game::new(player_names, the_number_of_cars, the_number_of_attempts);
     // println!("초기화된 게임: {:?}", initialized_game);
 }
