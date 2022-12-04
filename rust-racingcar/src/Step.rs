@@ -45,11 +45,10 @@ impl Step {
 }
 
 impl fmt::Display for Step {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    fn fmt(&self, _: &mut fmt::Formatter) -> fmt::Result {
         for _ in 0..self.is_moved {
             print!("-");
         }
-        // write!(f, "{}", self.is_moved)
         Ok(())
     }
 }
