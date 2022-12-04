@@ -27,3 +27,14 @@ fn test_mock_input_integer() {
     mock.mock_input_integer(&mut buf).unwrap();
     assert_eq!(buf, "3");
 }
+
+#[test]
+fn test_mock_input_names() {
+    let mut mock = MockStdin::new();
+    mock.expect_mock_input_names()
+        .times(1)
+        .returning(mock_input_names);
+    let mut buf = String::new();
+    mock.mock_input_names(&mut buf).unwrap();
+    assert_eq!(buf, "pobi,crong,honux");
+}
