@@ -1,5 +1,6 @@
 #[path = "player.rs"]
 pub(crate) mod player;
+use mockall::automock;
 
 #[derive(Debug)]
 pub struct Game {
@@ -8,6 +9,7 @@ pub struct Game {
     pub(crate) players: Vec<player::Player>
 }
 
+#[automock]
 pub trait GameFn {
     fn new(player_names: Vec<String>, the_number_of_cars: i32, the_number_of_attempts: i32) -> Self;
     fn print_the_dash_by_the_amount_of_is_moved_on_steps(&self);
@@ -19,8 +21,6 @@ pub trait GameFn {
     fn play_steps(self) -> Self;
 }
 
-use mockall::automock;
-#[automock]
 impl GameFn for Game {
     fn new(name_of_players: Vec<String>, number_of_players: i32, number_of_attempts: i32) -> Self {
         let new_game = Self {
