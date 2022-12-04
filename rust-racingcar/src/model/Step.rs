@@ -2,6 +2,7 @@ use rand::Rng;
 use std::fmt;
 
 #[derive(Debug)]
+#[derive(Clone)]
 pub struct Step {
     pub is_moved: i32,
     pub step_number: i32

@@ -1,5 +1,6 @@
 #[path = "Step.rs"] mod step;
 #[derive(Debug)]
+#[derive(Clone)]
 pub struct Player {
     name: String,
     steps: Vec<step::Step>
@@ -21,6 +22,10 @@ impl Player {
             let step = step::Step::new(now_step_number as i32, last_step);
             self.steps.push(step);
         }
+    }
+
+    pub fn get_steps(&self) -> &Vec<step::Step> {
+        &self.steps
     }
 
     pub fn print_the_dash_by_the_amount_of_is_moved_on_steps(&self) {

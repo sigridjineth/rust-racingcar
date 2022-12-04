@@ -1,4 +1,5 @@
-#[path = "Player.rs"] mod player;
+#[path = "Player.rs"]
+pub(crate) mod player;
 #[derive(Debug)]
 pub struct Game {
     pub number_of_players: i32,
@@ -27,6 +28,10 @@ impl Game {
 
     pub fn get_number_of_attempts(&self) -> i32 {
         self.number_of_attempts
+    }
+
+    pub fn get_players(&self) -> &Vec<player::Player> {
+        &self.players
     }
 
     pub fn initialize_players(mut self, name_of_players: &Vec<String>) -> Self {
