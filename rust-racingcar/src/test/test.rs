@@ -1,4 +1,4 @@
-#[path = "Step.rs"] mod step;
+#[path = "../model/Step.rs"] mod step;
 use std::io;
 use mockall::automock;
 use crate::test::step::Step;

@@ -1,6 +1,6 @@
-#[path = "input.rs"] mod input;
-#[path = "game.rs"] mod game;
-#[path = "test.rs"] mod test;
+#[path = "view/input.rs"] mod input;
+#[path = "model/game.rs"] mod game;
+#[path = "test/test.rs"] mod test;
 
 fn main() {
     println!("Rust로 구현하는 자동차 경주 게임");
