@@ -1,3 +1,7 @@
 .idea
 rust-racingcar/rust-racingcar.idea
 rust-racingcar/target/
+*.profraw
+html
+lcov.info
+target
