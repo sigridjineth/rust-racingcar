@@ -17,7 +17,8 @@ impl Player {
         for step_number in 0..self.steps.capacity() {
             // get last step
             let last_step = self.steps.last();
-            let step = step::Step::new(step_number as i32, last_step);
+            let now_step_number = step_number + 1;
+            let step = step::Step::new(now_step_number as i32, last_step);
             self.steps.push(step);
         }
     }
