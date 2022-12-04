@@ -13,33 +13,30 @@ impl Step {
             is_moved: 0,
             step_number
         };
-        this = Self::move_if_random_number_is_more_than_four(step_number);
-        this = Self::reflect_is_moved_by_last_step_is_moved(&mut this, last_step);
+        let this_step_move_number: i32 = Self::get_this_step_move_number_by_random();
+        this = Self::update_this_step_move_number(&mut this, this_step_move_number, last_step);
         this
     }
 
-    pub fn reflect_is_moved_by_last_step_is_moved(&mut self, last_step: Option<&Step>) -> Self {
+    pub fn update_this_step_move_number(&mut self, this_step_move_number: i32, last_step: Option<&Step>) -> Step {
         if let Some(last_step) = last_step {
-            self.is_moved += last_step.is_moved;
+            return Self {
+                is_moved: last_step.is_moved + this_step_move_number as i32,
+                step_number: self.step_number
+            };
         }
-        // hard copy self
-        let hard_copied_step = Self {
-            is_moved: self.is_moved,
+        return Self {
+            is_moved: this_step_move_number as i32,
             step_number: self.step_number
-        };
-        hard_copied_step
+        }
     }
 
-    pub fn move_if_random_number_is_more_than_four(step_number: i32) -> Self {
-        let mut step = Step {
-            is_moved: 0,
-            step_number
-        };
+    pub fn get_this_step_move_number_by_random() -> i32 {
         let random_number = rand::thread_rng().gen_range(0, 9);
         if random_number > 4 {
-            step.is_moved += random_number;
+            return random_number
         }
-        step
+        return 0
     }
 
     pub fn get_step_number(&self) -> i32 {
