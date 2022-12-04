@@ -1,5 +1,7 @@
+#[path = "Step.rs"] mod step;
 use std::io;
 use mockall::automock;
+use crate::test::step::Step;
 
 #[automock]
 trait Stdin {
@@ -37,4 +39,11 @@ fn test_mock_input_names() {
     let mut buf = String::new();
     mock.mock_input_names(&mut buf).unwrap();
     assert_eq!(buf, "pobi,crong,honux");
+}
+
+#[test]
+fn test_step_number() {
+    let last_step: Option<&Step> = None;
+    let step = Step::new(1, last_step);
+    assert_eq!(step.get_step_number(), 1);
 }
