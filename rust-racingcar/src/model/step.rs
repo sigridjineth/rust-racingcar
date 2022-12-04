@@ -43,6 +43,10 @@ impl Step {
     pub fn get_step_number(&self) -> i32 {
         self.step_number
     }
+
+    pub fn get_is_moved(&self) -> i32 {
+        self.is_moved
+    }
 }
 
 impl fmt::Display for Step {

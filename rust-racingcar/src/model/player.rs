@@ -1,9 +1,11 @@
-#[path = "Step.rs"] mod step;
+#[path = "step.rs"]
+pub (crate) mod step;
+
 #[derive(Debug)]
 #[derive(Clone)]
 pub struct Player {
-    name: String,
-    steps: Vec<step::Step>
+    pub(crate) name: String,
+    pub(crate) steps: Vec<step::Step>
 }
 
 impl Player {
