@@ -1,6 +1,21 @@
 # rust-racingcar
 자동차 경주용 게임을 관리하는 저장소
 
+## 테스트 커버리지 측정
+* [참고 링크](https://int-i.github.io/rust/2022-02-06/rust-grcov/)
+```bash
+$ rustup toolchain install nightly
+$ rustup default nightly
+$ cargo install grcov
+$ rustup component add llvm-tools-preview
+$ LLVM_PROFILE_FILE="grcov-%p-%m.profraw" RUSTFLAGS="-Zinstrument-coverage" cargo test
+$ grcov --ignore-not-existing --binary-path ./target/debug/ -o lcov.info -s . .
+# CodeCov 서비스 이용할 생각이라면?
+$ bash <(curl -s https://codecov.io/bash) -f lcov.info
+# 또는 HTML 파일로 보고 싶으면?
+$ grcov --ignore-not-existing --binary-path ./target/debug/ -t html -s . .
+```
+
 ## 🚀 1단계 기능 요구사항
 
 * 초간단 자동차 경주 게임을 구현한다. 
