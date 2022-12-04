@@ -15,7 +15,9 @@ impl Game {
         };
         let new_game = Self::initialize_players(new_game, &name_of_players);
         let new_game = Self::play_steps(new_game);
-        Self::print_the_dash_by_the_amount_of_is_moved_on_steps(&new_game);
+        for step_number in 1..=new_game.number_of_attempts {
+            Self::print_the_dash_by_the_amount_of_steps_on_this_step(&new_game, step_number);
+        }
         new_game
     }
 
@@ -47,5 +49,12 @@ impl Game {
         for player in self.players.iter() {
             player.print_the_dash_by_the_amount_of_is_moved_on_steps();
         }
+    }
+
+    pub fn print_the_dash_by_the_amount_of_steps_on_this_step(&self, step_number: i32) {
+        for player in self.players.iter() {
+            player.print_the_dash_by_the_amount_of_steps_on_this_step(step_number);
+        }
+        println!();
     }
 }
