@@ -2,6 +2,7 @@
 #[path = "model/game.rs"] mod game;
 #[path = "test/test.rs"] mod test;
 #[path = "test/game-test.rs"] mod game_test;
+use crate::game::GameFn;
 
 fn main() {
     println!("Rust로 구현하는 자동차 경주 게임");
@@ -20,6 +21,5 @@ fn main() {
     let player_names: Vec<String> = input::input_names();
     println!("입력 받은 자동차 이름, {:?}", player_names);
 
-    let initialized_game = game::Game::new(player_names, the_number_of_cars, the_number_of_attempts);
-    // println!("초기화된 게임: {:?}", initialized_game);
+    <game::Game as GameFn>::new(player_names, the_number_of_cars, the_number_of_attempts);
 }
